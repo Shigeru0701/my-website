@@ -2,7 +2,7 @@
 title: Publications
 ---
 
-./assets/style.css
+<link rel="stylesheet" href="./assets/style.css">
 <h1>Publications (selected)</h1>
 
 1. **Fujita, S.** *et al.* Virological characteristics of a SARS‑CoV‑2‑related bat coronavirus, BANAL‑20‑236. *EBioMedicine* 104, 105181 (2024).
