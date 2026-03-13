@@ -1,20 +1,31 @@
 name: Update publications from ORCID
 
 on:
-  workflow_dispatch: {}            # 手動実行
+  workflow_dispatch: {}
   schedule:
-    - cron: "00 18 * * *"         # UTC18:00 = JST 03:00 毎日
+    - cron: "00 18 * * *"
 
 permissions:
-  contents: write                  # 自動コミットするため
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Quick check ORCID endpoint
+        run: |
+          curl -s -H "Accept: application/json" -A "GitHubActions/1.0" \
+            https://pub.orcid.org/v3.0/0000-0001-9008-2123/works | head -c 200 || true
+
+      - name: List repo files (debug)
+        run: |
+          pwd
+          ls -la
+          echo "----- recursive -----"
+          ls -laR
 
       - name: Setup Python
         uses: actions/setup-python@v5
