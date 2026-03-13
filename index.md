@@ -3,7 +3,7 @@ title: Home
 description: Research homepage of Shigeru Fujita (DVM)
 ---
 
-<link rel="stylesheet" href="./assets/style.css"
+<link rel="stylesheet" href="./assets/style.css">
 
 <header>
   <h1>Shigeru Fujita, DVM</h1>
