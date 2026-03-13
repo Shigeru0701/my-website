@@ -38,7 +38,6 @@ description: Research homepage of Shigeru Fujita (DVM)
 これらの研究を通じ、効果的なワクチン・治療薬開発に資する基礎科学の構築と、次のパンデミックへの備えに寄与しています。
 
 <br />
-
 My research as a veterinarian and virologist centers on two major questions: **how viruses evade immune protection** and **how animal viruses adapt to infect humans**. By integrating molecular virology, antibody analysis, and field studies, I aim to generate insights that support the development of effective vaccines and therapeutics and strengthen preparedness for future pandemics.
 
 In the area of virus antigenicity and neutralizing antibodies, I identified an epitope targeted by a broadly neutralizing monoclonal antibody against feline calicivirus, located in a region of low mutation frequency rather than the known hypervariable site (Fujita et al., *Virus Research*, 2022). In SARS‑CoV‑2, I demonstrated that a specific spike substitution markedly reduces the efficacy of cilgavimab through steric hindrance at the antibody–spike interface (Fujita et al., *Viruses*, 2022). I have also contributed to characterizing emerging variants and assessing vaccine effectiveness (Fujita et al., *J. Infect. Dis.*, 2023; Kimura et al., *Cell*, 2022; Ito et al., *Nat. Commun.*, 2023), including work associated with a highly cited paper on the XBB variant.
