@@ -2,7 +2,7 @@
 title: Profile
 ---
 
-./assets/style.css
+<link rel="stylesheet" href="./assets/style.css">
 <h1>Profile</h1>
 
 **Shigeru Fujita（DVM）**  
