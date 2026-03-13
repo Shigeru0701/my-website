@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ORCID の Works を取得して publications.md を生成（年ごとに見出しを入れる版）
-- ORCID_ID：環境変数から取得（例: 0000-0001-9008-2123）
-- 生成先：リポジトリ直下の publications.md
-- 表示：年降順。タイトルを太字、ジャーナルはイタリック、DOI/PMID にリンク
+ORCID の Works を取得して publications.md を生成（年ごと見出し・書誌整形）
+- ORCID_ID：環境変数（例: 0000-0001-9008-2123）
+- 出力先：リポジトリ直下の publications.md
+- 体裁：年降順。タイトル太字・ジャーナル斜体。DOI/PMID/PMCID リンク
 """
 import json
 import os
@@ -13,21 +13,20 @@ import urllib.request
 import urllib.error
 from datetime import datetime
 
-# ==== 設定 ====
+# ===== 設定 =====
 ORCID_ID = os.environ.get("ORCID_ID", "").strip()
 if not ORCID_ID:
     sys.exit("ERROR: ORCID_ID is not set.")
-
 BASE = f"https://pub.orcid.org/v3.0/{ORCID_ID}"
 
-# 太字化したい自分の氏名（必要なら厳密化可）
+# 自分の氏名（太字化に使用）
 MY_FAMILY_NAME = "Fujita"
 MY_GIVEN_NAMES = "Shigeru"
 
 
-# ==== ORCID 取得ユーティリティ ====
+# ===== ORCID 取得ユーティリティ =====
 def fetch_json(url: str):
-    """ORCID Public API から JSON を取得（CI で安定するよう UA を付与）"""
+    """ORCID Public API から JSON を取得（CI 安定化のため User-Agent を付与）"""
     headers = {
         "Accept": "application/json",
         "User-Agent": "GitHubActions/ORCID-Fetcher (+https://github.com/)"
@@ -86,7 +85,6 @@ def fmt_authors(contributors: dict) -> str:
         return ""
     names = []
     for c in contributors.get("contributor", []):
-        # credit-name があればそれを優先
         credit = (c.get("credit-name") or {}).get("value")
         if credit:
             name = credit
@@ -100,12 +98,11 @@ def fmt_authors(contributors: dict) -> str:
                 fn = (c.get("contributor-attributes") or {}).get("contributor-family-name", {}).get("value") or ""
             name = " ".join([gn, fn]).strip()
 
-        # 自分を太字に
         low = name.lower()
         if MY_FAMILY_NAME.lower() in low and MY_GIVEN_NAMES.lower() in low:
             name = f"**{name}**"
         names.append(name)
-    # et al. ルール等は必要になったらここで調整
+
     names = [n for n in names if n]
     return ", ".join(names)
 
@@ -128,7 +125,8 @@ def entry(putcode: int):
         links.append(f'<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/{pmcid}/">PMCID</a>')
 
     j = f"*{journal}*" if journal else ""
-    # 先頭 "- " は後で除去→span化に使う
+
+    # 先頭 "- " は後で外して span 付与に使う
     line = "- "
     if authors:
         line += f"{authors}. "
@@ -138,7 +136,7 @@ def entry(putcode: int):
     return year, line.strip()
 
 
-# ==== ★ 年見出し付きで Markdown を組み立てる ====
+# ===== 年見出し付きで Markdown を組み立てる =====
 def build_markdown(entries):
     """
     entries: [(year, line), ...]   年降順に整列済みを想定
@@ -160,27 +158,23 @@ def build_markdown(entries):
     open_ul = False
 
     for y, ln in entries:
-        # 年が切り替わるタイミングで <ul> をクローズ→年見出し→新しい <ul>
         if y != cur_year:
             if open_ul:
                 lines.append("</ul>")
                 open_ul = False
             cur_year = y
-            # 未設定(-1) を最後にまとめる
             if cur_year and cur_year > 0:
                 lines.append(f'<div class="year-block">{cur_year}</div>')
             else:
-                lines.append(f'<div class="year-block">Unknown year</div>')
+                lines.append('<div class="year-block">Unknown year</div>')
             lines.append('<ul class="publist">')
             open_ul = True
 
-        # 先頭の "- " を外して span 付与（タイトル/ジャーナル）
+        # "- " を外してタイトル/ジャーナルを span に
         txt = ln[2:].strip()
-        # 最初の **..** を <span class="title">..</span> に置換
         if "**" in txt:
             txt = txt.replace("**", '<span class="title">', 1)
             txt = txt.replace("**", "</span>", 1)
-        # 最初の *..* を <span class="journal">..</span> に置換
         if "*" in txt:
             txt = txt.replace("*", '<span class="journal">', 1)
             txt = txt.replace("*", "</span>", 1)
@@ -195,7 +189,7 @@ def build_markdown(entries):
     return "\n".join(lines)
 
 
-# ==== メイン ====
+# ===== メイン =====
 def main():
     putcodes = get_putcodes()
     items = []
