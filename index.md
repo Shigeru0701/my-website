@@ -37,5 +37,5 @@ description: Research homepage of Shigeru Fujita (DVM)
 - Omicron BA.4/5 の cilgavimab 耐性機構を構造的に説明
 
 ## Contact
-- Email: fujitashigeru0701@g.ecc.u‑tokyo.ac.jp  
+- Email: fujitashigeru0701(AT)g.ecc.u‑tokyo.ac.jp  
 - ORCID: https://orcid.org/0000‑0001‑9008‑2123
