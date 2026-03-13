@@ -8,12 +8,13 @@ description: Research homepage of Shigeru Fujita (DVM)
 <header>
   <h1>Shigeru Fujita, DVM</h1>
   <nav>
-    ./profile.htmlProfile</a>
-    ./research.htmlResearch</a>
-    ./publications.htmlPublications</a>
-    ./cv.htmlCV</a>
-    ./blog/2026-03-06-welcome.htmlBlog</a>
+  <a href="./profile.html">Profile</a> |
+  <a href="./research.html">Research</a> |
+  <a href="./publications.html">Publications</a> |
+  <a href="./cv.html">CV</a> |
+  <a href="./blog/2026-03-06-welcome.html">Blog</a>
   </nav>
+
 </header>
 
 > **Field**: Virology / Veterinary Medicine  
