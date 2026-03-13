@@ -87,7 +87,7 @@ As a veterinarian and virologist, I study **viral immune evasion** and **zoonoti
 ---
 
 ## Selected Publications
-> 代表論文のみ。全一覧は [/publications.html]を参照。
+> 代表論文のみ。全一覧は [Publications](./publications.html) を参照。
 
 - **Fujita, S.** *et al.* *EBioMedicine* 104:105181, 2024 — Virological characteristics of BANAL‑20‑236.
 - **Fujita, S.** *et al.* *J. Virol.* 97:e00990‑23, 2023 — Determinants of bat ACE2 tropism.
