@@ -2,7 +2,7 @@
 title: Research
 ---
 
-./assets/style.css
+<link rel="stylesheet" href="./assets/style.css">
 <h1>Research</h1>
 
 ## 1) Coronavirus spillover と受容体トロピズム
