@@ -2,7 +2,7 @@
 title: Publications
 ---
 
-./assets/style.css
+<link rel="stylesheet" href="./assets/style.css">
 <h1>Publications</h1>
 
 > *This list syncs from ORCID. Entries are shown in **reverse chronological** order.*
