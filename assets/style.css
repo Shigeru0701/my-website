@@ -1,6 +1,6 @@
 :root{
-  --fg:#111; --bg:#fff; --muted:#666; --link:#0a66c2; --accent:#0f766e;
-  --code-bg:#f6f8fa; --kbd:#222; --kbd-bg:#f0f0f0;
+  --container: 860px;
+  --h1: 2.1rem; --h2: 1.6rem; --h3: 1.25rem;
 }
 html{scroll-behavior:smooth}
 body{font:16px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif; color:var(--fg); background:var(--bg); margin:0; padding:2rem 1rem; max-width:900px; margin-inline:auto}
@@ -16,3 +16,40 @@ table{border-collapse:collapse; width:100%} th,td{border:1px solid #ddd; padding
 hr{border:none;border-top:1px solid #eee;margin:2rem 0}
 .tag{display:inline-block;padding:.1rem .5rem;border:1px solid #ccc;border-radius:.75rem;font-size:.85em;color:#333;background:#fff}
 .badge{display:inline-block;margin-left:.5rem;padding:.1rem .4rem;border-radius:.4rem;background:#eee;font-size:.8em;color:#333}
+
+
+/* === Layout / Typography tweaks === */
+:root{
+  --container: 860px;
+  --h1: 2.1rem; --h2: 1.6rem; --h3: 1.25rem;
+}
+body{max-width:var(--container)}
+h1{font-size:var(--h1); margin:1.2rem 0 .8rem}
+h2{font-size:var(--h2); margin:1.2rem 0 .6rem; border-bottom:1px solid #e9ecef; padding-bottom:.2rem}
+h3{font-size:var(--h3); margin:1rem 0 .4rem}
+header{margin-bottom:1.5rem}
+nav{margin:.6rem 0 1.2rem}
+nav a{display:inline-block;margin-right:.8rem;color:var(--link)}
+nav a::after{content:"›"; margin-left:.35rem; color:#bbb}
+nav a:last-child::after{content:""}
+
+/* Subtle muted text */
+.muted{color:var(--muted);}
+
+/* === Publications (bibliography style) === */
+.publist{list-style:none; padding-left:0; margin-left:0}
+.publist li{margin:.65rem 0; padding-left:1.2rem; text-indent:-1.2rem;} /* hanging indent */
+.publist li .title{font-weight:700}
+.publist li .journal{font-style:italic}
+.publist li .links a{color:#0969da; text-decoration:none}
+.publist li .links a:hover{text-decoration:underline}
+.year-block{margin:1.25rem 0 .4rem; font-weight:700; color:#222}
+.badge-type{display:inline-block; margin-left:.5rem; padding:.08rem .35rem; font-size:.78em; border:1px solid #ddd; border-radius:.4rem; color:#555; background:#fafafa}
+
+/* Gentle HR for blocks */
+hr.soft{border:0; border-top:1px dashed #e5e7eb; margin:1.2rem 0}
+
+/* Back to top */
+.to-top{font-size:.9em; display:inline-block; margin:.8rem 0; color:#666}
+.to-top:hover{text-decoration:underline}
+
