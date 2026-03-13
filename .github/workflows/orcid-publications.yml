@@ -1,0 +1,41 @@
+name: Update publications from ORCID
+
+on:
+  workflow_dispatch: {}            # 手動実行
+  schedule:
+    - cron: "00 18 * * *"         # UTC18:00 = JST 03:00 毎日
+
+permissions:
+  contents: write                  # 自動コミットするため
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate publications.md from ORCID
+        env:
+          ORCID_ID: "0000-0001-9008-2123"
+        run: |
+          python -m pip install --upgrade pip
+          python scripts/orcid_to_md.py
+
+      - name: Commit & push if changed
+        run: |
+          if [ -n "$(git status --porcelain publications.md)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add publications.md
+            git commit -m "chore: auto-update publications from ORCID"
+            git push
+          else
+            echo "No changes."
+          fi
