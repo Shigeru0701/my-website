@@ -10,7 +10,7 @@ title: CV
 Division of Systems Virology, Department of Microbiology & Immunology,  
 The Institute of Medical Science (IMSUT), The University of Tokyo  
 Tokyo 108‑8639, Japan  
-Email: fujitashigeru0701@g.ecc.u‑tokyo.ac.jp  
+Email: fujitashigeru0701(AT)g.ecc.u‑tokyo.ac.jp  
 ORCID: https://orcid.org/0000-0001-9008-2123
 
 ---
