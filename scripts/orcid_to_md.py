@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ORCID の Works を取得して publications.md を生成（年ごと見出し・書誌整形）
+ORCID の Works を取得して publications.md を生成（年ごと見出し・整形版）
 - ORCID_ID：環境変数（例: 0000-0001-9008-2123）
 - 出力先：リポジトリ直下の publications.md
 - 体裁：年降順。タイトル太字・ジャーナル斜体。DOI/PMID/PMCID リンク
@@ -19,7 +19,7 @@ if not ORCID_ID:
     sys.exit("ERROR: ORCID_ID is not set.")
 BASE = f"https://pub.orcid.org/v3.0/{ORCID_ID}"
 
-# 自分の氏名（太字化に使用）
+# 自分の氏名（太字化に使用：必要なら厳密化OK）
 MY_FAMILY_NAME = "Fujita"
 MY_GIVEN_NAMES = "Shigeru"
 
@@ -108,7 +108,7 @@ def fmt_authors(contributors: dict) -> str:
 
 
 def entry(putcode: int):
-    """1件分（年, Markdown行）"""
+    """1件分（year:int, line:str）"""
     d = fetch_json(f"{BASE}/work/{putcode}")
     title = (d.get("title", {}) or {}).get("title", {}).get("value") or "Untitled"
     journal = (d.get("journal-title") or {}).get("value") or ""
@@ -146,7 +146,7 @@ def build_markdown(entries):
         "title: Publications",
         "---",
         "",
-        '<link rel="stylesheet" href="./assets/style.css">',
+        './assets/style.css',
         "<h1>Publications</h1>",
         "",
         "> *This list syncs from ORCID. Entries are shown in **reverse chronological** order.*",
@@ -170,7 +170,7 @@ def build_markdown(entries):
             lines.append('<ul class="publist">')
             open_ul = True
 
-        # "- " を外してタイトル/ジャーナルを span に
+        # 先頭 "- " を外し、タイトル/ジャーナルを <span> にする
         txt = ln[2:].strip()
         if "**" in txt:
             txt = txt.replace("**", '<span class="title">', 1)
@@ -211,4 +211,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-``
