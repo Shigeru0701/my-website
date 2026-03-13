@@ -2,7 +2,7 @@
 title: CV
 ---
 
-./assets/style.css
+<link rel="stylesheet" href="./assets/style.css">
 
 <h1>Curriculum Vitae</h1>
 
