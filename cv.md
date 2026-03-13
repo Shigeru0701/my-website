@@ -2,7 +2,7 @@
 title: CV (short)
 ---
 
-./assets/style.css
+<link rel="stylesheet" href="./assets/style.css">
 <h1>Curriculum Vitae (short)</h1>
 
 ### Education
