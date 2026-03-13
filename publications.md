@@ -2,7 +2,7 @@
 title: Publications
 ---
 
-./assets/style.css
+<link rel="stylesheet" href="./assets/style.css">
 <h1>Publications</h1>
 
 - **The spike S2 substitution, P804L, drives the adaptation of BANAL-20–236 to a broad range of Rhinolophus bat ACE2.** *Frontiers in Virology* 2025 DOI: https://doi.org/10.3389/fviro.2025.1612630
