@@ -78,32 +78,72 @@ def extract_ids(d: dict):
             pmcid = v
     return doi, pmid, pmcid
 
+import re
 
 def fmt_authors(contributors: dict) -> str:
-    """著者表記（自分は太字）"""
+    """
+    著者表記。自分の名前（ゆらぎ含む）だけ **太字** にする。
+    対応パターンの例:
+      - Fujita, S.
+      - Fujita, S
+      - S. Fujita
+      - S Fujita
+      - Fujita S
+      - Fujita Shigeru
+      - Shigeru Fujita
+    """
     if not contributors:
         return ""
-    names = []
+    raw_names = []
+
+    # ORCIDのcontributorsは構造が揺れるため、取り出し方を段階的に試す
     for c in contributors.get("contributor", []):
         credit = (c.get("credit-name") or {}).get("value")
         if credit:
-            name = credit
+            name = credit.strip()
         else:
-            gn = (((c.get("contributor-orcid") or {}).get("person") or {})
-                  .get("name") or {}).get("given-names", {}).get("value") or ""
-            fn = (((c.get("contributor-orcid") or {}).get("person") or {})
-                  .get("name") or {}).get("family-name", {}).get("value") or ""
+            # なるべく ORCID 側の person->name を優先
+            person = ((c.get("contributor-orcid") or {}).get("person") or {}).get("name") or {}
+            gn = (person.get("given-names") or {}).get("value") or ""
+            fn = (person.get("family-name") or {}).get("value") or ""
             if not (gn or fn):
+                # それでも無ければ attributes をフォールバック
                 gn = (c.get("contributor-attributes") or {}).get("contributor-given-name", {}).get("value") or ""
                 fn = (c.get("contributor-attributes") or {}).get("contributor-family-name", {}).get("value") or ""
             name = " ".join([gn, fn]).strip()
+        if name:
+            raw_names.append(name)
 
-        low = name.lower()
-        if MY_FAMILY_NAME.lower() in low and MY_GIVEN_NAMES.lower() in low:
-            name = f"**{name}**"
-        names.append(name)
+    if not raw_names:
+        return ""
 
-    names = [n for n in names if n]
+    # === あなたの名前の正規表現（ゆらぎ対応） ===
+    # family 名は必須で “Fujita” を含む。given は頭文字 S か "Shigeru" を許容。
+    # 代表的な区切りや句読点・空白に対応
+    family = re.escape(MY_FAMILY_NAME)          # Fujita
+    given_full = re.escape(MY_GIVEN_NAMES)      # Shigeru
+    given_initial = re.escape(MY_GIVEN_NAMES[0])  # S
+
+    # パターンを複数用意（順序は長いもの→短いもの）
+    patterns = [
+        rf"\b{family}\s*,\s*{given_full}\b",        # Fujita, Shigeru
+        rf"\b{family}\s*{given_full}\b",            # Fujita Shigeru
+        rf"\b{given_full}\s+{family}\b",            # Shigeru Fujita
+        rf"\b{family}\s*,\s*{given_initial}\.?\b",  # Fujita, S. / Fujita, S
+        rf"\b{given_initial}\.?\s+{family}\b",      # S. Fujita / S Fujita
+        rf"\b{family}\s+{given_initial}\.?\b",      # Fujita S / Fujita S.
+    ]
+
+    def bold_self(name: str) -> str:
+        low = name  # 元の大小は保持したいので、置換はパターンで探す
+        for pat in patterns:
+            m = re.search(pat, name, flags=re.IGNORECASE)
+            if m:
+                start, end = m.span()
+                return name[:start] + "**" + name[start:end] + "**" + name[end:]
+        return name
+
+    names = [bold_self(n) for n in raw_names]
     return ", ".join(names)
 
 
