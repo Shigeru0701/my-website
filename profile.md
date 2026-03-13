@@ -27,5 +27,5 @@ The Institute of Medical Science, The University of Tokyo
 - Speaker, Science Agora 2024（Public engagement）
 
 ### Contact
-- Email: fujitashigeru0701@(AT).ecc.u‑tokyo.ac.jp  
+- Email: fujitashigeru0701(AT).ecc.u‑tokyo.ac.jp  
 - ORCID: https://orcid.org/0000‑0001‑9008‑2123
