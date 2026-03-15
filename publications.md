@@ -55,4 +55,4 @@ title: Publications
 <li>Kimura, I., Yamasoba, D., Tamura, T., Nao, N., Suzuki, T., Oda, Y., Mitoma, S., Ito, J., Nasser, H., Zahradnik, J., Uriu, K., <span class="title">Fujita, S</span>., Kosugi, Y., Wang, L., Tsuda, M., Kishimoto, M., Ito, H., Suzuki, R., Shimizu, R., Begum, M.M., Yoshimatsu, K., Kimura, K.T., Sasaki, J., Sasaki-Tabata, K., Yamamoto, Y., Nagamoto, T., Kanamune, J., Kobiyama, K., Asakura, H., Nagashima, M., Sadamasu, K., Yoshimura, K., Shirakawa, K., Takaori-Kondo, A., Kuramochi, J., Schreiber, G., Ishii, K.J., Hashiguchi, T., Ikeda, T., Saito, A., Fukuhara, T., Tanaka, S., Matsuno, K., Sato, K.. <span class="journal"></span>Virological characteristics of the SARS-CoV-2 Omicron BA.2 subvariants, including BA.4 and BA.5.** *Cell* 2022 <span class="links"><a href="https://doi.org/10.1016/j.cell.2022.09.018">DOI</a></span></li>
 </ul>
 
-_Last updated: 2026-03-14 18:51 UTC_
+_Last updated: 2026-03-15 18:52 UTC_
