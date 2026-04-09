@@ -10,7 +10,7 @@ title: Publications
 
 <div class="year-block">2026</div>
 <ul class="publist">
-<li>Yueying Zhang, <span class="title">Shigeru Fujita</span>, Masahiro Kajihara, Katendi Changula, Bernard Mudenda Hang?ombe, Shusuke Kawakubo, Spyros Lytras, Jumpei Ito, Akinori Kanai, Suzuki Yutaka, Ayato Takada, Kei Sato. <span class="journal"></span>Novel African Rhinolophus bat ACE2 sequences reveal the determinants of Afro-Eurasian sarbecovirus entry.**  2026 <span class="links"><a href="https://doi.org/10.64898/2026.04.02.716099">DOI</a></span></li>
+<li>Yueying Zhang, <span class="title">Shigeru Fujita</span>, Masahiro Kajihara, Katendi Changula, Bernard Mudenda Hang’ombe, Shusuke Kawakubo, Spyros Lytras, Jumpei Ito, Akinori Kanai, Yutaka Suzuki, Ayato Takada, Kei Sato. <span class="journal"></span>Novel African Rhinolophus bat ACE2 sequences reveal the determinants of Afro-Eurasian sarbecovirus entry.**  2026 <span class="links"><a href="https://doi.org/10.64898/2026.04.02.716099">DOI</a></span></li>
 </ul>
 <div class="year-block">2025</div>
 <ul class="publist">
@@ -59,4 +59,4 @@ title: Publications
 <li>Kimura, I., Yamasoba, D., Tamura, T., Nao, N., Suzuki, T., Oda, Y., Mitoma, S., Ito, J., Nasser, H., Zahradnik, J., Uriu, K., <span class="title">Fujita, S</span>., Kosugi, Y., Wang, L., Tsuda, M., Kishimoto, M., Ito, H., Suzuki, R., Shimizu, R., Begum, M.M., Yoshimatsu, K., Kimura, K.T., Sasaki, J., Sasaki-Tabata, K., Yamamoto, Y., Nagamoto, T., Kanamune, J., Kobiyama, K., Asakura, H., Nagashima, M., Sadamasu, K., Yoshimura, K., Shirakawa, K., Takaori-Kondo, A., Kuramochi, J., Schreiber, G., Ishii, K.J., Hashiguchi, T., Ikeda, T., Saito, A., Fukuhara, T., Tanaka, S., Matsuno, K., Sato, K.. <span class="journal"></span>Virological characteristics of the SARS-CoV-2 Omicron BA.2 subvariants, including BA.4 and BA.5.** *Cell* 2022 <span class="links"><a href="https://doi.org/10.1016/j.cell.2022.09.018">DOI</a></span></li>
 </ul>
 
-_Last updated: 2026-04-08 19:27 UTC_
+_Last updated: 2026-04-09 19:19 UTC_
